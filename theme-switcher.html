@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Switcher</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            text-align: center;
+            padding: 40px;
+            max-width: 600px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            transition: color 0.3s ease;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            transition: color 0.3s ease;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.1em;
+            border: 2px solid;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        .theme-indicator {
+            margin-top: 20px;
+            font-size: 1.3em;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        /* Light Theme Styles */
+        .light-theme {
+            background-color: white;
+            color: black;
+        }
+
+        .light-theme button {
+            background-color: white;
+            color: black;
+            border-color: black;
+        }
+
+        .light-theme button:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* Dark Theme Styles */
+        .dark-theme {
+            background-color: black;
+            color: white;
+        }
+
+        .dark-theme button {
+            background-color: black;
+            color: white;
+            border-color: white;
+        }
+
+        .dark-theme button:hover {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body class="light-theme">
+    <div class="container">
+        <h1 id="heading">Welcome to Theme Switcher</h1>
+        <p id="paragraph">
+            Click the button below to toggle between Light and Dark themes. 
+            Watch as the page dynamically changes its appearance using JavaScript and the DOM!
+        </p>
+        <button id="themeButton" onclick="toggleTheme()">Change Theme</button>
+        <div class="theme-indicator" id="themeIndicator">Light Mode</div>
+    </div>
+
+    <script>
+        // Initialize theme state
+        let isLightTheme = true;
+
+        // Function to toggle theme
+        function toggleTheme() {
+            // Access DOM elements
+            const body = document.body;
+            const heading = document.getElementById('heading');
+            const paragraph = document.getElementById('paragraph');
+            const themeIndicator = document.getElementById('themeIndicator');
+
+            if (isLightTheme) {
+                // Switch to Dark Theme
+                body.className = 'dark-theme';
+                body.style.backgroundColor = 'black';
+                body.style.color = 'white';
+                
+                heading.style.color = 'white';
+                paragraph.style.color = 'white';
+                
+                themeIndicator.textContent = 'Dark Mode';
+                themeIndicator.style.color = 'white';
+                
+                // Change font style for dark theme
+                heading.style.fontFamily = 'Georgia, serif';
+                paragraph.style.fontFamily = 'Georgia, serif';
+                
+                isLightTheme = false;
+            } else {
+                // Switch to Light Theme
+                body.className = 'light-theme';
+                body.style.backgroundColor = 'white';
+                body.style.color = 'black';
+                
+                heading.style.color = 'black';
+                paragraph.style.color = 'black';
+                
+                themeIndicator.textContent = 'Light Mode';
+                themeIndicator.style.color = 'black';
+                
+                // Change font style for light theme
+                heading.style.fontFamily = 'Arial, sans-serif';
+                paragraph.style.fontFamily = 'Arial, sans-serif';
+                
+                isLightTheme = true;
+            }
+        }
+    </script>
+</body>
+</html>
